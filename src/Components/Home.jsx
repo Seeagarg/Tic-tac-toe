@@ -4,11 +4,16 @@ import './Home.css'
 import Lottie from 'lottie-react';
 import  winner  from '../Animations/winner.json'
 import './Input.css'
+import { useSelector } from 'react-redux';
 
 function Home() {
 
     const [box,setBox] = useState(Array(9).fill(null));
     const [userTurn,setUserTurn] = useState(true);
+
+    const name = useSelector((state)=>state.name.value)
+    // console.log(name);
+    localStorage.setItem("name",name);
 
 
     const checkWinner=()=>{
@@ -90,7 +95,7 @@ function Home() {
             <>
             <div className='win'>
             <div className="winData">
-            <h3>{isWinner === 'X' ? "you Won the Game" : "computer wons the game"}</h3>
+            <h3>{isWinner === 'X' ? `${localStorage.getItem("name")} Won the Game` : "computer wons the game"}</h3>
            <button className='play-btn' onClick={clickHandler}> Play Again</button>
             </div>
             

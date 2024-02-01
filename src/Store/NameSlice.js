@@ -4,8 +4,8 @@ const nameSlice = createSlice({
     name:"name",
     initialState:{value:""},
   
-    reducer:{
-        add(state,action){
+    reducers:{
+        add:(state,action)=>{
             state.value = action.payload;
         }
     }

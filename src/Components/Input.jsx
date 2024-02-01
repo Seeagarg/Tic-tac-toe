@@ -2,16 +2,20 @@ import React,{useState} from 'react'
 import './Input.css'
 import { useDispatch } from 'react-redux';
 import {add} from '../Store/NameSlice';
+import { useNavigate } from 'react-router-dom';
 
 function Input() {
 
     const dispatch = useDispatch();
+
+    const navigate = useNavigate();
 
 
     const [name,setName] = useState("");
 
     const handleClick=(name)=>{
         dispatch(add(name));
+        navigate('/game')
     }
 
     
