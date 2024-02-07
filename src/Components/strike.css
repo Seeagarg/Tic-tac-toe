@@ -1,0 +1,431 @@
+.strike{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    left: 35%;
+    background-color: #8b027e;
+    /* color: orange; */
+    z-index: 1000;
+}
+
+.strike-row-1{
+    
+    width:30%;
+    height: 4px;
+    top: 43%;
+}
+
+.strike-row-2{
+    width:30%;
+    height: 4px;
+    top: 67%;
+}
+
+.strike-row-3{
+    width:30%;
+    height: 4px;
+    top: 88%;
+}
+
+.strike-col-1{
+    height: 45vh;
+    width: 4px;
+    top:33%;
+    left:42%;
+}
+
+.strike-col-2{
+    height: 45vh;
+    width: 4px;
+    top:33%;
+    left:50%;
+}
+
+.strike-col-3{
+    height: 45vh;
+    top:33%;
+    width: 4px;
+    left:58%;
+}
+
+.strike-diagonal-1{
+    width: 30%;
+    height: 4px;
+    top: 45vh;
+    /* left: 38%; */
+    right: 45%;
+    transform: skewY(38deg);
+}
+
+.strike-diagonal-2{
+    width: 30%;
+    height: 4px;
+    top: 45vh;
+    left: 35%;
+    transform: skewY(-38deg);
+}
+
+
+
+
+@media (min-width: 1025px) and (max-width: 1280px){
+
+    .strike-col-1{
+        height: 45vh;
+        width: 4px;
+        top:33%;
+        left:40%;
+    }
+
+    .strike-col-3{
+        height: 45vh;
+        top:33%;
+        width: 4px;
+        left:58%;
+    }
+ 
+
+    .strike-diagonal-1{
+        width: 30%;
+        height: 4px;
+        top: 45vh;
+        /* left: 38%; */
+        right: 45%;
+        transform: skewY(38deg);
+    }
+
+
+
+    .strike-diagonal-2{
+        width: 30%;
+        height: 4px;
+        top: 44vh;
+        left: 35%;
+        transform: skewY(-40deg);
+    }
+}
+
+
+@media (min-width: 768px) and (max-width: 1024px){
+
+    .strike-row-1{
+    
+        width:30%;
+        height: 4px;
+        top: 48%;
+    }
+
+    .strike-col-1{
+        height: 45vh;
+        width: 4px;
+        top:33%;
+        left:39%;
+    }
+
+    .strike-col-3{
+        height: 45vh;
+        top:33%;
+        width: 4px;
+        left:60%;
+    }
+
+
+    .strike-diagonal-1{
+        width: 30%;
+        height: 4px;
+        top: 40vh;
+        /* left: 38%; */
+        right: 45%;
+        transform: skewY(34deg);
+    }
+
+
+    .strike-diagonal-2{
+        width: 34%;
+        height: 4px;
+        top: 40vh;
+        left: 35%;
+        transform: skewY(-35deg);
+    }
+}
+
+
+@media (min-width: 679px) and (max-width: 768px) {
+
+    .strike-row-1{
+    
+        width:30%;
+        height: 4px;
+        top: 48%;
+    }
+
+    .strike-row-3{
+        width:46vw;
+        justify-self: center;
+        height: 4px;
+        top: 89%;
+        left: 25%;
+    }
+
+    .strike-col-1{
+        height: 45vh;
+        width: 4px;
+        top:33%;
+        left:35%;
+    }
+
+    .strike-col-3{
+        height: 45vh;
+        top:33%;
+        width: 4px;
+        left:63%;
+    }
+
+
+    .strike-diagonal-1{
+        width: 17rem;
+        height: 4px;
+        top: 40vh;
+        left: 27vw;
+        /* right: 45%; */
+        transform: skewY(33deg);
+    }
+
+
+
+    .strike-diagonal-2{
+        width: 40%;
+        height: 4px;
+        top: 38vh;
+        left: 33%;
+        transform: skewY(-35deg);
+    }
+}
+
+
+
+
+
+
+@media (min-width: 481px) and (max-width: 678px) {
+
+    .strike-row-1{
+    
+        width:50%;
+        height: 4px;
+        top: 48%;
+        left:27%;
+    }
+
+
+    .strike-row-2{
+        width:70vw;
+        height: 4px;
+        top: 68%;
+        left: 10%;
+    }
+
+    .strike-row-3{
+        width:50vw;
+        justify-self: center;
+        height: 4px;
+        top: 89%;
+        left: 19%;
+    }
+
+    .strike-col-1{
+        height: 45vh;
+        width: 4px;
+        top:33%;
+        left:32%;
+    }
+
+
+    .strike-col-3{
+        height: 45vh;
+        top:33%;
+        width: 4px;
+        left:65%;
+    }
+    
+
+    .strike-diagonal-1{
+        width: 17rem;
+        height: 4px;
+        top: 40vh;
+        left: 19vw;
+        /* right: 45%; */
+        transform: skewY(33deg);
+    }
+
+
+    .strike-diagonal-2{
+        width: 50%;
+        height: 4px;
+        top: 38vh;
+        left: 28%;
+        transform: skewY(-35deg);
+    }
+}
+
+@media (min-width: 578px) and (max-width:678px){
+
+    .strike-row-2{
+        width:70vw;
+        height: 4px;
+        top: 68%;
+        left: 10%;
+    }
+
+    .strike-col-3{
+        height: 45vh;
+        top:33%;
+        width: 4px;
+        left:69%;
+    }
+
+
+
+    .strike-diagonal-1{
+        width: 17rem;
+        height: 4px;
+        top: 44vh;
+        left: 28vw;
+        /* right: 45%; */
+        transform: skewY(33deg);
+    }
+}
+
+
+@media only screen and (max-width: 480px) {
+
+    
+   
+    .strike-row-1{
+    
+        width:80vw;
+        height: 4px;
+        top: 48%;
+        left:8%;
+    }
+    
+    .strike-row-2{
+        width:70vw;
+        height: 4px;
+        top: 68%;
+        left: 10%;
+    }
+    
+    .strike-row-3{
+        width:80vw;
+        justify-self: center;
+        height: 4px;
+        top: 89%;
+        left: 1%;
+    }
+    
+    .strike-col-1{
+        height: 45vh;
+        width: 4px;
+        top:33%;
+        left:24%;
+    }
+
+    
+    .strike-col-2{
+        height: 45vh;
+        width: 4px;
+        top:33%;
+        left:50%;
+    }
+    
+    .strike-col-3{
+        height: 45vh;
+        top:33%;
+        width: 4px;
+        left:78%;
+    }
+    
+    .strike-diagonal-1{
+        width: 60vw;
+        height: 4px;
+        top: 40vh;
+        left: 10vw;
+        /* right: 35%; */
+        transform: skewY(35deg);
+    }
+    
+    .strike-diagonal-2{
+        width: 70vw;
+        height: 4px;
+        top: 38vh;
+        left: 14vw;
+        transform: skewY(-34deg);
+    }
+    
+   
+}
+
+
+@media (max-width: 320px) {
+    
+    .strike-row-1{
+        width:100vw;
+        height: 4px;
+        top: 45%;
+    }
+    
+    .strike-row-2{
+        width:100vw;
+        height: 4px;
+        top: 68%;
+       
+    }
+    
+    .strike-row-3{
+        width:90vw;
+        height: 4px;
+        top: 89%;
+        
+    }
+    
+    .strike-col-1{
+        height: 65%;
+        width: 4px;
+        top:36%;
+        left:15%;
+    }
+    
+    .strike-col-2{
+        height: 65%;
+        width: 4px;
+        top:36%;
+        left:50%;
+    }
+    
+    .strike-col-3{
+        height: 65%;
+        top:36%;
+        width: 4px;
+        left:80%;
+    }
+    
+    .strike-diagonal-1{
+        width: 17rem;
+        height: 4px;
+        top: 35vh;
+        /* left: 30vw; */
+        /* right: 45%; */
+        transform: skewY(33deg);
+    }
+    
+    .strike-diagonal-2{
+        width: 70vw;
+        height: 4px;
+        top: 40vh;
+        left: 5%;
+        transform: skewY(-34deg);
+    }
+    
+   
+}

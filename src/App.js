@@ -6,7 +6,7 @@ import { Routes,Route } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="text-black">
+    <div className="text-white">
     <Routes>
     <Route path='/' element={<Input/>}/>
     <Route path='/game' element={<Home/>}/>

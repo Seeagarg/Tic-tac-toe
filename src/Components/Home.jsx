@@ -5,48 +5,103 @@ import Lottie from 'lottie-react';
 import  winner  from '../Animations/winner.json'
 import './Input.css'
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import Strike from './Strike';
+
 
 function Home() {
 
     const [box,setBox] = useState(Array(9).fill(null));
+    const [isWinner,setWinner] = useState(null);
     const [userTurn,setUserTurn] = useState(true);
+    const [winningSquares,setWinningSquares] = useState([]);
+    const [endGame,setEndGame] = useState(false)
 
-    const name = useSelector((state)=>state.name.value)
-    // console.log(name);
-    localStorage.setItem("name",name);
+    const [strikeClass,setStrikeClass] = useState("");
+
+    const navigate = useNavigate();
+
+    const combination =[
+        {combo:[0,1,2],strikeclass:"strike-row-1"},
+        {combo:[3,4,5],strikeclass:"strike-row-2"},
+        {combo:[6,7,8],strikeclass:"strike-row-3"},
+        {combo:[0,3,6],strikeclass:"strike-col-1"},
+        {combo:[1,4,7],strikeclass:"strike-col-2"},
+        {combo:[2,5,8],strikeclass:"strike-col-3"},
+        {combo:[0,4,8],strikeclass:"strike-diagonal-1"},
+        {combo:[2,4,6],strikeclass:"strike-diagonal-2"},
+    ]
+
+    // const name = useSelector((state)=>state.name.value)
+    
+
+    const name = localStorage.getItem("NAME")
 
 
-    const checkWinner=()=>{
+    useEffect(()=>{
 
+        combination.map((item)=>{
+            console.log("logic")
+            console.log("winnn",winningSquares)
+            console.log("item",item.combo)
+            console.log(JSON.stringify(item.combo) == JSON.stringify(winningSquares))
+            if(JSON.stringify(item.combo) == JSON.stringify(winningSquares)){
+                console.log("-------",item.combo)
+                setStrikeClass(item.strikeclass);
+                setEndGame(true);
+            }
+        }
+        )
+
+    },[winningSquares])
+    
+
+    function checkWinner(){
             const winArray =[
-                [0,1,2],
-                [0,3,6],
-                [0,4,8],
-                [1,4,7],
-                [2,5,8],
-                [2,4,6],
-                [3,4,5],
-                [6,7,8]
-    
-            ]
-    
+            [0,1,2],
+            [0,3,6],
+            [0,4,8],
+            [1,4,7],
+            [2,5,8],
+            [2,4,6],
+            [3,4,5],
+            [6,7,8]
+
+        ]
             for(let logic of winArray){
                 const [a,b,c] = logic;
-                if(box[a] === box[b] && box[b] === box[c]){
-    
+                if( box[a] && box[b] && box[c] &&  box[a] === box[b] && box[b] === box[c]){
+                    setWinningSquares(logic);
+                    console.log(logic);
                     return box[a];
                 }
-    
             }
-            return false;
-        
-        
+    
+        return false;    
     } 
 
-    const isWinner = checkWinner();
+    
+
+    useEffect(() => {
+        const winner = checkWinner();
+        const winnerCheckTimeout = setTimeout(() => {
+            
+            if (winner) {
+                setWinner(winner);
+                console.log(winningSquares);
+            }
+        }, 1000); 
+
+        return () => clearTimeout(winnerCheckTimeout);
+    }, [box]);
+    
+    
+   
+
+    
 
     const computerTurn=()=>{
-        if(!userTurn){
+        if(!userTurn && !endGame){
             for(let i=0;i<9;i++){
                 const randomIndex = Math.floor(Math.random() * box.length)
                 if(!box[randomIndex]){
@@ -63,11 +118,6 @@ function Home() {
         setTimeout(()=>{computerTurn()},1000)
     },[userTurn])
 
-    useEffect(()=>{
-        if(!isWinner && box.forEach((item)=>(item !== null))){
-            setBox(Array(9).fill(null));
-        }
-    })
 
     const squareClick=(index)=>{
         if(box[index] !== null){
@@ -78,16 +128,17 @@ function Home() {
         copyState[index] = userTurn ? 'X' : '0';
         setBox(copyState);
         setUserTurn(!userTurn);
-        // console.log(index," clicked")
     }
 
     function clickHandler(){
         console.log("clicked")
+        navigate('/')
+        localStorage.removeItem("NAME")
         setBox(Array(9).fill(null))
     }
 
   return (
-    <div className='' >
+    <div className='home' >
     
     <div className='title'>Tic Tac Toe Game</div>
      {
@@ -95,18 +146,19 @@ function Home() {
             <>
             <div className='win'>
             <div className="winData">
-            <h3>{isWinner === 'X' ? `${localStorage.getItem("name")} Won the Game` : "computer wons the game"}</h3>
-           <button className='play-btn' onClick={clickHandler}> Play Again</button>
+            <div className='winner fw-bold text-white'>{isWinner === 'X' ? `${localStorage.getItem("NAME")} Won the Game` : "computer wons the game"}</div>
+           <button className='play-btn' onClick={clickHandler}  > Play Again</button>
             </div>
             
             
-            <div className="animation">
+            <div className="animation-win">
             <Lottie
                 animationData={winner}
                 loop={true}
                 autoPlay={true}
+                className="lottie-animation"
             />
-            </div>
+            </div>    
 
             
         
@@ -118,11 +170,13 @@ function Home() {
         :
         <>
       <div className='board'>
-       
-      <h3 style={{marginBottom:"40px",color:"black",fontWeight:"bold",fontSize:"1.5rem"}}> {userTurn? 'X will run the move'
-        : '0 will run the move'}</h3>
+       <div className="btn">
+        <button onClick={()=>{setBox(Array(9).fill(null))}}>Reset Game</button>
+       </div>
+      <div className='turn'> {userTurn? `${name} will run the move`
+        : 'Computer will run the move'}</div>
       <div className="board-row">
-      <Square value={box[0]} squareClick={()=>{setTimeout(squareClick(0),3000)}}/>
+      <Square value={box[0]} squareClick={()=>{squareClick(0)}}/>
       <Square value={box[1]} squareClick={()=>{squareClick(1)}}/>
       <Square value={box[2]} squareClick={()=>{squareClick(2)}}/>
       </div>
@@ -136,9 +190,11 @@ function Home() {
       <Square value={box[7]} squareClick={()=>{squareClick(7)}}/>
       <Square value={box[8]} squareClick={()=>{squareClick(8)}}/>
       </div>
+      <Strike strikeClass={strikeClass}/>
       </div>
       </>
      }
+     
     </div>
   )
 }

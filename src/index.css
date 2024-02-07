@@ -3,21 +3,12 @@
 @tailwind utilities;
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: black;
-  background-image: url("https://c8.alamy.com/comp/J0KM0P/tic-tac-toe-game-on-wooden-background-J0KM0P.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  backdrop-filter: blur(8px);
-  height: 100vh;
+  
+  color: white;
+  /* background-color: black; */
+  background: linear-gradient(to right, #8d0268,#03084f);
+  font-family: 'Agbalumo', system-ui; 
+  font-family: 'Poppins', sans-serif; 
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+
